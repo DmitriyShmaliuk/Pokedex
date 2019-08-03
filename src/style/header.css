@@ -1,0 +1,43 @@
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+.head_menu{
+    height: 65px;
+    width: 250px;
+    text-align: center;
+
+    font-size: 20px;
+    font-weight: bold;
+  
+    color: white;
+    background-color: black;
+}
+
+.head_text{
+    text-decoration: none;
+    color: rgb(255,255,255);
+}
+
+.head_text:active{
+    font-size: 90%;
+}
+  
+.menu_section{
+    height: 30px;
+    margin-left: 30px;
+    padding-top: 15px;
+}
+  
+.menu_section a{
+    font-size: 16px;
+    text-decoration: none;
+
+    color: #3C3838;
+}
+  
+.menu_section p:hover, .menu_section a:hover{
+    color: black;
+}

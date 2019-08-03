@@ -1,0 +1,14 @@
+.footer{
+  background-color: #3f51b5;
+  color: white;
+
+  font-family: 'Broadway', sans-serif;
+  text-align: center;
+
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 70px;
+  margin-top: 30px;
+}
