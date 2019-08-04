@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Pokedex/static/css/main.d39e8813.chunk.css",
+    "main.js": "/Pokedex/static/js/main.9821b3c7.chunk.js",
+    "main.js.map": "/Pokedex/static/js/main.9821b3c7.chunk.js.map",
+    "runtime~main.js": "/Pokedex/static/js/runtime~main.cf3900f6.js",
+    "runtime~main.js.map": "/Pokedex/static/js/runtime~main.cf3900f6.js.map",
+    "static/js/2.395d60ef.chunk.js": "/Pokedex/static/js/2.395d60ef.chunk.js",
+    "static/js/2.395d60ef.chunk.js.map": "/Pokedex/static/js/2.395d60ef.chunk.js.map",
+    "index.html": "/Pokedex/index.html",
+    "precache-manifest.c2d15107a516cbac207b9cd6e7dd90c1.js": "/Pokedex/precache-manifest.c2d15107a516cbac207b9cd6e7dd90c1.js",
+    "service-worker.js": "/Pokedex/service-worker.js",
+    "static/css/main.d39e8813.chunk.css.map": "/Pokedex/static/css/main.d39e8813.chunk.css.map",
+    "static/media/index.css": "/Pokedex/static/media/card_background.36022bff.jpg"
+  }
+}
