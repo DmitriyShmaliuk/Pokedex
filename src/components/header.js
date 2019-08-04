@@ -78,6 +78,7 @@ export default function SearchAppBar() {
       <div className = "head_menu"><p>Pokedex</p></div>
       <div className = "menu_section"><Link to = "/about"><p>About</p></Link></div>
       <div className = "menu_section"><p><a href = "https://github.com/WilliaamKing/Pokedex" target="__blank">Code</a></p></div>
+      <div className = "menu_section"><p><a href = "mailto:dimkas2001@icloud.com" target= "__blank">Contact</a></p></div>
     </div>
   );
 
