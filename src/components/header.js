@@ -9,6 +9,8 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Drawer from '@material-ui/core/Drawer';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import { red } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,6 +40,15 @@ const useStyles = makeStyles(theme => ({
       width: 'auto',
     },
   },
+  icon: {
+    margin: theme.spacing(2),
+  },
+  iconHover: {
+    margin: theme.spacing(2),
+    '&:hover': {
+      color: red[800],
+    },
+  },
   searchIcon: {
     width: theme.spacing(7),
     height: '100%',
@@ -63,6 +74,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+function HomeIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
+
 export default function SearchAppBar() {
   const classes = useStyles();
   
@@ -76,6 +95,7 @@ export default function SearchAppBar() {
   const sideList = side => (
     <div className = "menu" onClick={toggleDrawer(side, false)} onKeyDown={toggleDrawer(side, false)}>
       <div className = "head_menu"><p>Pokedex</p></div>
+      <div className ="menu_section"><Link to = "/"><p>Home</p></Link></div>
       <div className = "menu_section"><Link to = "/about"><p>About</p></Link></div>
       <div className = "menu_section"><p><a href = "https://github.com/WilliaamKing/Pokedex" target="__blank">Code</a></p></div>
       <div className = "menu_section"><p><a href = "mailto:dimkas2001@icloud.com" target= "__blank">Contact</a></p></div>
@@ -108,7 +128,7 @@ export default function SearchAppBar() {
           </Drawer>
 
           <Typography className={classes.title} variant="h6" noWrap>
-            <Link to = './' className = "head_text">Pokedex</Link>
+           Pokedex
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
