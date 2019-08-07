@@ -9,7 +9,6 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Drawer from '@material-ui/core/Drawer';
-import SvgIcon from '@material-ui/core/SvgIcon';
 import { red } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
@@ -73,14 +72,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }));
-
-function HomeIcon(props) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </SvgIcon>
-  );
-}
 
 export default function SearchAppBar() {
   const classes = useStyles();
