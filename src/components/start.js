@@ -4,7 +4,7 @@ import Card from './card';
 export default class Start extends React.Component{
     state = {
         items: [],
-        count: 32
+        count: 32,
     }
 
     componentDidMount (){
@@ -29,7 +29,7 @@ export default class Start extends React.Component{
           return(
             <div>
                 <div className = "body">
-                    {this.state.items.slice(0, this.state.count).map((el) =>
+                    {this.state.items.slice(0, this.state.count).map((el) => 
                     <Card name = {el.name} front_default = {el.sprites.front_default}/>)}                
                 </div>
                 
@@ -38,7 +38,7 @@ export default class Start extends React.Component{
 
                     { 
                       this.state.count < 802 &&
-                      <p className = 'ref' onClick = {this.gettingMore}>&#11015;More</p>
+                      <p className = 'ref' onClick = {this.gettingMore}>More</p>
                     }
                 </div>
                 
