@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('./searching_form.css');
 @import url('./footer.css');
 @import url('./header.css');
 @import url('./card.css');
@@ -40,10 +41,7 @@ code {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 65px;
 }
-
-
 
 .info{
   min-height: 70vh;
@@ -73,9 +71,6 @@ code {
 }
 
 .result_of_search .ref{
-   border-bottom: 1px dotted black;
-   width: 55px; 
-
    font-family: "Snap";
    font-size: 18px;
 
@@ -86,3 +81,9 @@ code {
   color:red;
   cursor: pointer
 }
+
+.start{
+  margin-top: 65px;
+  min-height: 85vh;
+}
+
