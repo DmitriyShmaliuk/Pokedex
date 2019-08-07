@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "34b478a3bec36c1dff7b226d06b27bd0",
+    "revision": "c22843ded710865169f9efbd216d411c",
     "url": "/Pokedex/index.html"
   },
   {
-    "revision": "639b74589ddac423228c",
-    "url": "/Pokedex/static/css/main.c72cad98.chunk.css"
+    "revision": "58bf108981745b722650",
+    "url": "/Pokedex/static/css/main.4eed97e4.chunk.css"
   },
   {
     "revision": "b9cea03347b2b926bf92",
     "url": "/Pokedex/static/js/2.20eb956d.chunk.js"
   },
   {
-    "revision": "639b74589ddac423228c",
+    "revision": "58bf108981745b722650",
     "url": "/Pokedex/static/js/main.f9731eeb.chunk.js"
   },
   {
@@ -22,6 +22,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2d8844b6e4a9c1d513ae16e6ffbd654e",
     "url": "/Pokedex/static/media/Broadway.2d8844b6.ttf"
+  },
+  {
+    "revision": "78d7bdc55148aaa3307a1e8ad735c40f",
+    "url": "/Pokedex/static/media/Goudos.78d7bdc5.TTF"
+  },
+  {
+    "revision": "8b64e15c77dcb53a49803815cd72c4f2",
+    "url": "/Pokedex/static/media/Snap.8b64e15c.ttf"
   },
   {
     "revision": "36022bff24b374858ac069345c00c614",
