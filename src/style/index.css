@@ -47,5 +47,32 @@ code {
   font-family: 'Arial', sans-serif;
 }
 
+.result_of_search{
+  padding: 15px;
 
+  font-family: "Goudy Old Style";
+  font-size: 18px;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result_of_search p{
+  margin: 1px;
+}
+
+.result_of_search .ref{
+   border-bottom: 1px dotted black;
+   width: 65px; 
+
+   font-family: "Snap ITC";
+   font-size: 18px;
+
+   color: blue;
+}
+
+.result_of_search .ref:hover{
+  color:red;
+  cursor: pointer
+}

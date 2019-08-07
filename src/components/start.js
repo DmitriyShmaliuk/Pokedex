@@ -4,13 +4,13 @@ import Card from './card';
 export default class Start extends React.Component{
     state = {
         items: [],
-        count: 0
+        count: 32
     }
 
-    componentWillMount (){
+    componentDidMount (){
         var arr = [];
  
-        for (var i =1;i<=807;++i)
+        for (var i =1;i<=802;++i)
         {
            fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
            .then(res => res.json())
@@ -18,13 +18,29 @@ export default class Start extends React.Component{
         }
     }
 
+    gettingMore = () =>{
+        if (this.state.count + 32 < this.state.items.length)
+           this.setState({count: this.state.count + 32});
+        else
+            this.setState({count: this.state.items.length});
+    }
+
     render(){
           return(
-            <div className = "body">
-                {this.state.items.slice(this.state.count, this.state.count+32).map((el) =>
-                 <Card name = {el.name} front_default = {el.sprites.front_default}/>)}
-                 Showed {this.state.count + 32} pokemons from {this.state.items.length}
+            <div>
+                <div className = "body">
+                    {this.state.items.slice(0, this.state.count).map((el) =>
+                    <Card name = {el.name} front_default = {el.sprites.front_default}/>)}                
+                </div>
+                
+                <div className = 'result_of_search'>
+                    <p> Showed {this.state.count} pokemons from {this.state.items.length}</p>
 
+                    { 
+                      this.state.count < 802 &&
+                      <p className = 'ref' onClick = {this.gettingMore}>&#11015;More</p>
+                    }
+                </div>
                 
             </div>
           )
