@@ -3,6 +3,16 @@
 @import url('./header.css');
 @import url('./card.css');
 
+@font-face {
+  font-family: Goudos;
+  src: url('fonts/Goudos.TTF'); 
+ }
+ 
+ @font-face{
+  font-family: Snap;
+  src: url('fonts/Snap.ttf');
+ }
+ 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -50,7 +60,7 @@ code {
 .result_of_search{
   padding: 15px;
 
-  font-family: "Goudy Old Style";
+  font-family: "Goudos";
   font-size: 18px;
 
   display: flex;
@@ -66,7 +76,7 @@ code {
    border-bottom: 1px dotted black;
    width: 55px; 
 
-   font-family: "Snap ITC";
+   font-family: "Snap";
    font-size: 18px;
 
    color: blue;
