@@ -5,6 +5,7 @@ import './App.css';
 import Home from './components/home';
 import Start from './components/start';
 import About from './components/about';
+import Info from './components/info';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
               <Switch>
                  <Route exact path = '/' component = {Start}/>
                  <Route path = '/about' component = {About}/>
+                 <Route path = '/pokemons/:number' component = {Info}/>
               </Switch>
            </Home>
        </Router>

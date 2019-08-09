@@ -41,7 +41,7 @@ export default class Start extends React.Component{
 
                 <div className = "body">
                     {this.state.show_arr.slice(0, this.state.count).map((el) => 
-                    <Card name = {el.name} front_default = {el.sprites.front_default}/>)}                
+                    <Card name = {el.name} front_default = {el.sprites.front_default} id = {el.id}/>)}                
                 </div>
                 
                 <div className = 'result_of_search'>
