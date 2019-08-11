@@ -6,7 +6,7 @@ export default class Start extends React.Component{
     state = {
         items: [],
         show_arr: [],
-        count: 40,
+        count: 32,
     }
 
     componentDidMount (){
@@ -21,8 +21,8 @@ export default class Start extends React.Component{
     }
 
     gettingMore = () =>{
-        if (this.state.count + 40 < this.state.show_arr.length)
-           this.setState({count: this.state.count + 40});
+        if (this.state.count + 32 < this.state.show_arr.length)
+           this.setState({count: this.state.count + 32});
         else
             this.setState({count: this.state.show_arr.length});
     }
