@@ -135,8 +135,25 @@
 
 @media screen and (max-width: 380px)
 {
+   .info_card .main_info{
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+   }
+
+   .info_card .main_info .image img{
+       min-width: 50vw;
+   }
+
+   .info_card .main_info .skils{
+       min-width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 420px)
+{
     .info_card .profile .info_profile{
-        display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
@@ -181,5 +198,19 @@
     .info_card .profile .info_profile .c_profile{
         width: 35%;
     }
+}
 
+@media screen and (max-width: 1024px)
+{
+    .info_card{
+        width: 80vw;
+    }
+
+    .info_card .main_info .image img{
+        width: 20vw; 
+    }
+
+    .info_card .main_info .skils{
+        width: 40vw;
+    }
 }
