@@ -200,7 +200,7 @@
     }
 }
 
-@media screen and (max-width: 1024px)
+@media screen and (max-width: 1080px)
 {
     .info_card{
         width: 80vw;
@@ -214,3 +214,4 @@
         width: 40vw;
     }
 }
+
