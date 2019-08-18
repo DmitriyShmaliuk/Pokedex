@@ -18,8 +18,6 @@ export default class Info extends React.Component{
 
    render()
    {
-       console.log(this.state.add_info);
-
        return (
            
        <div className = "background_card">
