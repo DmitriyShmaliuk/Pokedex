@@ -30,16 +30,11 @@
 }
 
 .text_of_card .head_card{
-    text-decoration: none;
     font-style: italic;
     font-weight: bold;
     font-size: 14px;
     
     color: white;
-}
-
-.text_of_card .head_card:hover{
-    font-size: 101%;
 }
 
 .card_info{

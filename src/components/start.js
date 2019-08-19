@@ -29,19 +29,25 @@ export default class Start extends React.Component{
 
     searchAsName = (event) =>{
         var result = this.state.items.filter((el)=>{return el.name.indexOf(document.getElementById('search').value) >=0});
-        this.setState({show_arr: result});
+        this.setState ({show_arr: result});
+        
+        if (result.length<32)
+          this.setState ({count: result.length});
+
+        if (document.getElementById('search').value.length === 0)
+          this.setState({count: 32});
     }
 
     render(){
           return(
             <div className = "start">
                 <div>
-                 <SearchingForm searchingMethod = {this.searchAsName}/>
+                    <SearchingForm searchingMethod = {this.searchAsName}/>
                 </div>
 
                 <div className = "body">
                     {this.state.show_arr.slice(0, this.state.count).map((el) => 
-                    <Card name = {el.name} front_default = {el.sprites.front_default} id = {el.id}/>)}                
+                    <Card name = {el.name} front_default = {el.sprites.front_default} id = {el.id}/>)}       
                 </div>
                 
                 <div className = 'result_of_search'>

@@ -1,9 +1,10 @@
 import React from 'react';
+import Zoom from '@material-ui/core/Zoom';
   
 export default class Info extends React.Component{
     state = {
         info: {},
-        add_info: {}
+        add_info: {},
     }
 
     componentDidMount(){
@@ -19,9 +20,9 @@ export default class Info extends React.Component{
    render()
    {
        return (
-           
        <div className = "background_card">
               {this.state.info.stats !== undefined &&
+                <Zoom in = "true" timeout={{ enter: 500}}>   
                 <div className = "info_card">
                     <div className = "head">
                         <div></div>
@@ -88,8 +89,9 @@ export default class Info extends React.Component{
                         </div>
                     </div>
                 </div>
+                </Zoom> 
               }
-       </div>     
+       </div> 
        );
    }
 }

@@ -1,5 +1,13 @@
 .searching_form{
-    margin-left: 65px;
-    margin-right: 95px;
-    padding-top: 40px
-  }
+    width: 92vw;
+    margin: 0 auto;
+    padding-top: 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.searching_form #search{
+  width: 89vw;
+}

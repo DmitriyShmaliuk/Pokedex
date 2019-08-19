@@ -1,0 +1,102 @@
+.filter_form {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+
+    width: 100vw;
+    height: 100vh;
+   
+    background: rgba(0,0,0,0.6);
+}
+
+.filter{
+    width: 30vw;
+    background: #ffffff;
+    padding-bottom: 5px;
+
+    z-index: 200;
+}
+
+.filter .header{
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    height: 65px;
+}
+
+.filter .header h1, .filter .header h4{
+    margin: 0px;
+} 
+
+.filter .check{
+    padding:  auto;
+    margin: 10px 0;
+}
+
+.filter .check .check_min{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.filter .check .check_min div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.filter .check .types{
+    text-align: center;
+}
+
+.filter .check .types h3{
+    margin-bottom: 5px;
+}
+
+.filter .check .types .checkBoxes{
+    font-size: 16px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter .check .types .checkBoxes div{
+    display: flex;
+    justify-content: flex-start;
+    width: 20%;
+    margin-left: 10px;
+}
+@media screen and (max-width: 320px)
+{
+    .filter{
+        min-width: 90vw;
+    }
+}
+
+@media screen and (max-width: 360px)
+{
+    .filter .check .types .checkBoxes div{
+        margin-left: 20px;
+    }
+}
+@media screen and (max-width: 720px)
+{
+    .filter{
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 780px)
+{
+    .filter{
+        min-width: 50vw;
+    }
+}
+
+@media screen and (max-width: 1024px)
+{
+    .filter{
+        min-width: 40vw;
+    }
+}
