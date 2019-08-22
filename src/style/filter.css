@@ -24,6 +24,7 @@
     color: #ffffff;
     text-align: center;
     height: 65px;
+    padding: 5px 0px;
 }
 
 .filter .header h1, .filter .header h4{

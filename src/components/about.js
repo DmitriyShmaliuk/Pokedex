@@ -1,8 +1,25 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/styles';
+
+const useStyle = makeStyles({
+     info:{
+      minHeight: '70vh',
+      marginTop: '90px',
+
+      '& h1, & p':{
+        margin: '30px',
+        width: '85%',
+      
+        fontFamily: 'Arial, sans-serif',
+      }
+     }
+});
 
 export default function About (){
+    const classes = useStyle();
+
     return(
-        <div className = "info">
+        <div className= {classes.info}>
                   <h1>About Pokedex</h1>
                   <p>
                     This is Pokedex, application about Pokemons...

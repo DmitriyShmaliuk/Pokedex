@@ -33,7 +33,7 @@ const useStyles = makeStyles (themes => ({
     },
 }))
 
-export default function SearchingForm ({searchingMethod}){
+export default function SearchingForm ({searchingMethod,filterMethod}){
     const classes = useStyles();
 
     return(
@@ -44,7 +44,7 @@ export default function SearchingForm ({searchingMethod}){
            <div className = "filter_form">
                 <div className = {classes.filterForm}>
                     <CloseIcon className = {classes.closeIcon} onClick = {()=>{document.getElementsByClassName('filter_form')[0].style.display = "none"}}/>
-                    <FilterForm />
+                    <FilterForm filterMethod = {filterMethod}/>
                 </div>
             </div>
 

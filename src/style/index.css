@@ -30,22 +30,15 @@ code {
   min-height: 100vh;
 }
 
+.start{
+  margin-top: 65px;
+  min-height: 85vh;
+}
+
 .body{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-.info{
-  min-height: 70vh;
-  margin-top: 90px;
-}
-
-.info h1, .info p{
-  margin: 30px;
-  width: 85%;
-
-  font-family: 'Arial', sans-serif;
 }
 
 .result_of_search{
@@ -73,10 +66,5 @@ code {
 .result_of_search .ref:hover{
   color:red;
   cursor: pointer
-}
-
-.start{
-  margin-top: 65px;
-  min-height: 85vh;
 }
 

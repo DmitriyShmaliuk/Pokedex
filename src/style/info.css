@@ -133,8 +133,12 @@
     width: 50%;
 }
 
-@media screen and (max-width: 420px)
+@media screen and (max-width: 480px)
 {
+    .info_card{
+        margin-top: 70px;
+        margin-bottom: 10px;
+    }
     .info_card .main_info{
         flex-direction: column;
         justify-content: center;
@@ -159,40 +163,6 @@
 
     .info_card .profile .info_profile div{
         width: 90%;
-    }
-}
-
-@media screen and (max-width: 480px)
-{
-    .info_card{
-        width: 90vw;
-        margin-top: 75px;
-        margin-bottom: 20px;
-    }
-
-    .info_card .main_info .image img{
-        width: 20vw;
-    }
-
-    .info_card .main_info .skils{
-        width: 60vw;
-    }
-
-    .info_card .main_info .count{
-        width: 70%;
-    }
-
-    .info_card .profile .info_profile div{
-        font-size: 14px;
-        min-width: 47%;
-    }
-    
-    .info_card .profile .info_profile .prop{
-        min-width: 60%;
-    }
-    
-    .info_card .profile .info_profile .c_profile{
-        width: 35%;
     }
 }
 

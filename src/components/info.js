@@ -74,7 +74,14 @@ export default class Info extends React.Component{
 
                             <div>
                                 <span className = "prop">Abilities:</span>
-                                <span className = "c_profile">{this.state.info.abilities[0].ability.name}, {this.state.info.abilities[1].ability.name}</span>
+                                <span className = "c_profile">
+                                    {this.state.info.abilities[0] &&
+                                        this.state.info.abilities[0].ability.name
+                                    }
+                                    {this.state.info.abilities[1] &&
+                                        this.state.info.abilities[1].ability.name
+                                    }
+                                </span>
                             </div>
                             <div><span className = "prop">Capture rate:</span><span className = "c_profile">{this.state.add_info.capture_rate}</span></div>
 
