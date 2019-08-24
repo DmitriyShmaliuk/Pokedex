@@ -75,11 +75,9 @@ const Start = observer((props) => {
                 <Card name = {el.name} front_default = {el.sprites.front_default} id = {el.id}/>)}       
             </div>
 
-            <Pages_list />
-
             <div className = 'result_of_search'>
                 <div className = 'pagination'>
-
+                    <Pages_list />  
                 </div>
 
                 <div className = 'props'>

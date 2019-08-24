@@ -16,7 +16,7 @@ const useStyle = makeStyles({
      }
 });
 
-export default function About (){
+const About = (() =>{
     const classes = useStyle();
 
     return(
@@ -39,4 +39,6 @@ export default function About (){
                   </p>
         </div>
     );
-}
+});
+
+export default About;
