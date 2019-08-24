@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { observer } from 'mobx-react';
 import Card from './card';
 import Store from '../store/store';
+import Pages_list from './pages_list';
 import SearchingForm from './searching_form';
 
 const Start = observer((props) => {
@@ -73,6 +74,8 @@ const Start = observer((props) => {
                 { localStore.showPokemons.map((el) => 
                 <Card name = {el.name} front_default = {el.sprites.front_default} id = {el.id}/>)}       
             </div>
+
+            <Pages_list />
 
             <div className = 'result_of_search'>
                 <div className = 'pagination'>

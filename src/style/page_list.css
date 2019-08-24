@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Merienda&display=swap');
+
+.pages_list{
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px auto;
+}
+
+.pages_list .button{
+    width: 60px;
+}
+
+.pages_list .section{
+    width: 25px;
+}
+
+.pages_list .button, .pages_list .section{
+    background: #b5b1b1;
+    text-align: center;
+    margin: 3px;
+    cursor: pointer;
+
+    font-family: 'Merienda';
+
+    border-radius: 10px;
+}
+
+.pages_list .button:hover, .pages_list .section:hover{
+    color: red;
+}
+
+@media screen and (max-width: 780px)
+{
+    .pages_list{
+        width: 80vw;
+    }
+}
