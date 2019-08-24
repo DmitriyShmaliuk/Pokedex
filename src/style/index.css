@@ -42,6 +42,16 @@ code {
 }
 
 .result_of_search{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.result_of_search .props{
+  text-align: center;
+}
+
+/*delete this shit
+.result_of_search{
   padding: 15px;
 
   font-family: 'Merienda', cursive;
@@ -67,4 +77,5 @@ code {
   color:red;
   cursor: pointer
 }
+*/
 

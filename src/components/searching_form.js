@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useContext}from 'react';
+import { observer } from 'mobx-react';
+import Store from '../store/store';
 import TextField from '@material-ui/core/TextField';
 import FilterIcon from  '@material-ui/icons/FilterList';
 import CloseIcon from  '@material-ui/icons/Close';
@@ -33,21 +35,24 @@ const useStyles = makeStyles (themes => ({
     },
 }))
 
-export default function SearchingForm ({searchingMethod,filterMethod}){
+const SearchingForm = observer (() =>{
     const classes = useStyles();
+    const localStore = useContext(Store);
 
     return(
         <div className = "searching_form">
-           <TextField id ="search" fullWidth autocomplete = 'off' placeholder = 'Searching Pokemons' name="search" onChange = {searchingMethod} />
+           <TextField id ="search" fullWidth autocomplete = 'off' placeholder = 'Searching Pokemons' name="search" onChange = {localStore.SearchAsName} />
            <FilterIcon className = {classes.filterIcon} onClick = {()=>{document.getElementsByClassName('filter_form')[0].style.display = "block"}}/>
 
            <div className = "filter_form">
                 <div className = {classes.filterForm}>
                     <CloseIcon className = {classes.closeIcon} onClick = {()=>{document.getElementsByClassName('filter_form')[0].style.display = "none"}}/>
-                    <FilterForm filterMethod = {filterMethod}/>
+                    <FilterForm />
                 </div>
             </div>
 
         </div>
     );
-}
+});
+
+export default SearchingForm;

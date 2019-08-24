@@ -1,26 +1,14 @@
 import React from 'react';
+import { useContext } from "react";
+import { observer } from 'mobx-react';
 import Card from './card';
+import Store from '../store/store';
 import SearchingForm from './searching_form';
 
-export default class Start extends React.Component{
-    state = {
-        items: [],
-        show_arr: [],
-        count: 32,
-    }
+const Start = observer((props) => {
+    const localStore = useContext (Store);
 
-    componentDidMount (){
-        var arr = [];
-
-        for (var i =1;i<=802;++i)
-        {
-           fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
-           .then(res => res.json())
-           .then(result => {arr.push(result); this.setState({items: arr, show_arr: arr})});
-        }
-    }
-
-    gettingMore = () =>{
+    /*gettingMore = () =>{
         if (this.state.count + 32 < this.state.show_arr.length)
            this.setState({count: this.state.count + 32});
         else
@@ -68,29 +56,39 @@ export default class Start extends React.Component{
 
         second_result = second_result.sort((a,b) => {return a.id - b.id});
         this.setState({show_arr: second_result});
+    }*/
+
+    const changePokemonsCount = () =>{
+        var count = document.getElementById('show').value;
+        localStore.SetCountPokemons(count);
     }
 
-    render(){
-          return(
-            <div className = "start">
-                <div>
-                    <SearchingForm searchingMethod = {this.searchAsName} filterMethod = {this.searchAsFilterMenu}/>
+    return(
+        <div className = "start">
+            <div>
+                <SearchingForm/>
+            </div>
+
+            <div className = "body">
+                { localStore.showPokemons.map((el) => 
+                <Card name = {el.name} front_default = {el.sprites.front_default} id = {el.id}/>)}       
+            </div>
+
+            <div className = 'result_of_search'>
+                <div className = 'pagination'>
+
                 </div>
 
-                <div className = "body">
-                    {this.state.show_arr.slice(0, this.state.count).map((el) => 
-                    <Card name = {el.name} front_default = {el.sprites.front_default} id = {el.id}/>)}       
-                </div>
-                
-                <div className = 'result_of_search'>
-                    <p> Showed {(this.state.count>this.state.show_arr.length)?this.state.show_arr.length:this.state.count} pokemons from {this.state.show_arr.length}</p>
-
-                    { 
-                      this.state.count < this.state.show_arr.length &&
-                      <p className = 'ref' onClick = {this.gettingMore}>More</p>
-                    }
+                <div className = 'props'>
+                   <label>Show: <select id = 'show' onChange = {changePokemonsCount}>
+                        <option>50</option>
+                        <option>20</option>
+                        <option>10</option>
+                    </select></label>
                 </div>
             </div>
-          )
-    }
-}
+        </div>
+    )
+});
+
+export default Start;
