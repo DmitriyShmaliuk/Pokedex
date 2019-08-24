@@ -1,13 +1,11 @@
-import React, { createContext} from 'react';
+import { createContext} from 'react';
 import  { observable, decorate, action} from 'mobx';
-import { array } from 'prop-types';
 
 class Store{
-    pokemons = new Array; //массив покемонов
-    showPokemons = new Array; //массив показываемых покемонов
-    filterPokemons = new Array;
-    pokemon = new Object; //текущий покемона
-    additionalInfo = new Object;
+    pokemons = []; //массив покемонов
+    showPokemons = []; //массив показываемых покемонов
+    pokemon = {}; //текущий покемона
+    additionalInfo = {};
     page = 1; //текущая страница
     countOfPokemons = 50;
     countOfCard = 802;
@@ -70,28 +68,36 @@ class Store{
         console.log(this.pokemons.length);
     }
 
-    SettingPokemons = (value = 1) =>{
-        fetch(`https://pokeapi.co/api/v2/pokemon/${value}/`)
-        .then (res => res.json ())
-        .then (result => this.pokemon = result);
+    SettingPokemons = async(value = 1) =>{
+        var API_URL = await fetch(`https://pokeapi.co/api/v2/pokemon/${value}/`);
+        var data = await API_URL.json();
+        this.pokemon = data;
 
-        fetch(`https://pokeapi.co/api/v2/pokemon-species/${value}/`)
-        .then(res => res.json())
-        .then(result => this.additionalInfo = result);
+
+        API_URL = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${value}/`);
+        data = await API_URL.json();
+        this.additionalInfo = data;
     }
 }
 
 decorate(Store, {
     pokemons: observable,
     showPokemons: observable,
+    pokemon: observable,
     additionalInfo: observable,
     page: observable,
     countOfPokemons: observable,
+    countOfCard: observable,
+    types: observable,
+
+    InitialPokemons: action,
     SetCountPokemons: action,
     SearchAsName: action,
-    SettingPage: action,
+    SearchAsFilterMenu:action,
     NextPage: action,
     BackPage: action,
+    SettingPage: action,
+    SettingPokemons:action
 });
 
-export default createContext(new Store);
+export default createContext(new Store());

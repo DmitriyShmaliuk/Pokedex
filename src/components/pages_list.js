@@ -7,7 +7,7 @@ const Pages_list = observer(() =>{
     const localStore = useContext (Store);
 
     const gettingSection = () =>{
-        var arr = new Array;
+        var arr = [];
 
         if (localStore.page !== 1){
             arr.push(<Section number= {1}/>);
@@ -17,7 +17,7 @@ const Pages_list = observer(() =>{
         for(var i = localStore.page; i <localStore.page + 10 && i< Math.ceil(localStore.countOfCard/localStore.countOfPokemons); ++i)
             arr.push(<Section number = {i}/>);
 
-        if (localStore.page != Math.ceil(localStore.countOfCard / localStore.countOfPokemons))
+        if (localStore.page !== Math.ceil(localStore.countOfCard / localStore.countOfPokemons))
             arr.push(<div className='section'>...</div>);
         
             arr.push(<Section number= {Math.ceil(localStore.countOfCard / localStore.countOfPokemons)}/>);

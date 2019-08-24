@@ -8,8 +8,6 @@ import BackIcon from  '@material-ui/icons/ArrowBack';
 const Info = observer((props)=>{
     const localStore = useContext(Store);
 
-    localStore.SettingPokemons (props.match.params.number);
-
     return (
         <div className = "background_card">
                {localStore.pokemon.stats !== undefined &&
@@ -52,8 +50,8 @@ const Info = observer((props)=>{
                                  <h4>Additional information</h4>
  
                                  <div className = "info_profile">
-                                     <div><span className = "prop">Weigth:</span><span className = "c_profile">{localStore.additionalInfo.weight / 10.0} kg</span></div>
-                                     <div><span className = "prop">Height:</span><span className = "c_profile">{localStore.additionalInfo.height / 10.0} m</span></div>
+                                     <div><span className = "prop">Weigth:</span><span className = "c_profile">{localStore.pokemon.weight / 10.0} kg</span></div>
+                                     <div><span className = "prop">Height:</span><span className = "c_profile">{localStore.pokemon.height / 10.0} m</span></div>
  
                                      <div>
                                          <span className = "prop">Egg Groups:</span>
