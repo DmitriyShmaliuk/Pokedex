@@ -14,13 +14,13 @@ const Pages_list = observer(() =>{
             arr.push(<div className='section'>...</div>);
         }
 
-        for(var i = localStore.page; i <localStore.page + 10 && i< Math.ceil(localStore.countOfCard/localStore.countOfPokemons); ++i)
+        for(var i = localStore.page; i <localStore.page + 10 && i< Math.ceil(localStore.showPokemons.length/localStore.countOfPokemons); ++i)
             arr.push(<Section number = {i}/>);
 
-        if (localStore.page !== Math.ceil(localStore.countOfCard / localStore.countOfPokemons))
+        if (localStore.page !== Math.ceil(localStore.showPokemons.length / localStore.countOfPokemons))
             arr.push(<div className='section'>...</div>);
         
-            arr.push(<Section number= {Math.ceil(localStore.countOfCard / localStore.countOfPokemons)}/>);
+            arr.push(<Section number= {Math.ceil(localStore.showPokemons.length / localStore.countOfPokemons)}/>);
 
         return arr;
     }

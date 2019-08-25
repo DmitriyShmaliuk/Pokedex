@@ -71,7 +71,8 @@ const Start = observer((props) => {
             </div>
 
             <div className = "body">
-                { localStore.showPokemons.map((el) => 
+                { localStore.showPokemons.slice((localStore.page * localStore.countOfPokemons)-localStore.countOfPokemons,
+                                                localStore.page * localStore.countOfPokemons).map((el) => 
                 <Card name = {el.name} front_default = {el.sprites.front_default} id = {el.id}/>)}       
             </div>
 
