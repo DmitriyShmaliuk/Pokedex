@@ -57,6 +57,8 @@ class Store{
 
         this.filterPokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page * this.countOfPokemons)
                       .map(el=>this.showPokemons.push(el));
+
+        document.getElementById('search').value = '';
     }
 
     //функция поиска по имени

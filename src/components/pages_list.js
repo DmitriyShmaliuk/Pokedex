@@ -3,7 +3,7 @@ import Store from '../store/store';
 import Section from './section';
 import { observer } from 'mobx-react';
 
-const Pages_list = observer(() =>{
+const PagesList = observer(() =>{
     const localStore = useContext (Store);
 
     const gettingSection = () =>{
@@ -46,4 +46,4 @@ const Pages_list = observer(() =>{
     )
 });
 
-export default Pages_list;
+export default PagesList;

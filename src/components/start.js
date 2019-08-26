@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { observer } from 'mobx-react';
 import Card from './card';
 import Store from '../store/store';
-import Pages_list from './pages_list';
+import PagesList from './pages_list';
 import SearchingForm from './searching_form';
 
 const Start = observer(() => {
@@ -27,7 +27,7 @@ const Start = observer(() => {
 
             <div className = 'result_of_search'>
                 <div className = 'pagination'>
-                    <Pages_list />  
+                    <PagesList />  
                 </div>
 
                 <div className = 'props'>
