@@ -1,26 +1,31 @@
 import React, { useContext } from 'react';
-import { observer } from 'mobx-react';
 import Store from '../store/store';
 import Section from './section';
+import { observer } from 'mobx-react';
 
 const Pages_list = observer(() =>{
     const localStore = useContext (Store);
 
     const gettingSection = () =>{
-        var arr = [];
+        let arr = [];
 
-        if (localStore.page !== 1){
+       if(localStore.countOfCard !== 0)
+       {
+            if (localStore.page !==1 && localStore.countOfCard > 5){
+                arr.push(<Section number= {1}/>);
+                arr.push(<div className='section'>...</div>);
+            }
+
+            for(var i = localStore.page; i <localStore.page + 5 && i< Math.ceil(localStore.countOfCard/localStore.countOfPokemons); ++i)
+                arr.push(<Section number = {i}/>);
+
+            if (localStore.page !== Math.ceil(localStore.countOfCard / localStore.countOfPokemons))
+                arr.push(<div className='section'>...</div>);
+            
+                arr.push(<Section number= {Math.ceil(localStore.countOfCard / localStore.countOfPokemons)}/>);
+       }
+       else
             arr.push(<Section number= {1}/>);
-            arr.push(<div className='section'>...</div>);
-        }
-
-        for(var i = localStore.page; i <localStore.page + 10 && i< Math.ceil(localStore.showPokemons.length/localStore.countOfPokemons); ++i)
-            arr.push(<Section number = {i}/>);
-
-        if (localStore.page !== Math.ceil(localStore.showPokemons.length / localStore.countOfPokemons))
-            arr.push(<div className='section'>...</div>);
-        
-            arr.push(<Section number= {Math.ceil(localStore.showPokemons.length / localStore.countOfPokemons)}/>);
 
         return arr;
     }

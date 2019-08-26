@@ -68,6 +68,16 @@
     width: 20%;
     margin-left: 10px;
 }
+
+.filter .check .clear{
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: 'Merienda';
+}
+
+.filter .check .clear:hover{
+    color: red;
+}
 @media screen and (max-width: 320px)
 {
     .filter{

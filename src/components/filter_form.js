@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import State from '../store/store';
+import {observer} from 'mobx-react';
 
-export default function Filter ({filterMethod}){
+const Filter = observer (()=>{
+    const localStore = useContext(State); //устновить контекс (локальное хранилище)
+
     const types = ['normal', 'flying', 'poison', 'ground', 'bug', 'fire', 'water', 'grass', 'figting', 'rock', 'ghost',
-                     'steel', 'electric', 'psychic', 'ice', 'dragon', 'dark', 'fairy', 'shadow'];
+    'steel', 'electric', 'psychic', 'ice', 'dragon', 'dark', 'fairy', 'shadow'];
 
     return (
             <div className = 'filter'>
@@ -11,7 +15,7 @@ export default function Filter ({filterMethod}){
                     <h4>Filter</h4>
                 </div>
 
-                <form onChange = {filterMethod}>
+                <form onChange = {localStore.SearchAsFilterMenu}>
                     <div className = 'check'>
                         <div className = 'check_min'>
                             <div><span>Min HP: </span><input type='number' name = 'hp' id = 'hp'/></div>
@@ -25,9 +29,15 @@ export default function Filter ({filterMethod}){
                             <div className = "checkBoxes">
                             {types.map(el => <div><input type = 'checkbox' name = {el} id = {el}/><span>{el}</span></div>)}
                         </div>
+
+                        <div className = "clear" onClick = {localStore.ClearFilterForm}>
+                            Clear filter form
+                        </div>
                     </div>
                     </div>
                 </form>
             </div>
     );
-}
+})
+
+export default Filter;

@@ -145,8 +145,18 @@
     width: 50%;
 }
 
+
 @media screen and (max-width: 480px)
 {
+    .background_card .back_icon{
+        top: 90px;
+        right: 85%;
+    }
+
+    .background_card .back_icon:hover{
+        color: #ffffff;
+    }
+
     .info_card{
         margin-top: 70px;
         margin-bottom: 10px;
@@ -192,4 +202,3 @@
         width: 40vw;
     }
 }
-
