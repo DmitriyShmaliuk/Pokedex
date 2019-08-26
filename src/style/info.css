@@ -1,10 +1,11 @@
 .background_card{
-    background-color: #f2e9e9;
     display: flex;
     justify-content: center;
     
     align-items: center;
     min-height: 90vh;
+
+    background-color: #f2e9e9;
 }
 
 .background_card .back_icon{
@@ -16,28 +17,30 @@
 }
 
 .background_card .back_icon:hover{
-    color: red;
+    color: rgb(255,0,0);
 }
 
 .info_card{
-    background-color: rgb(255,255,255);
     width: 50vw;
     margin-top: 50px;
     padding-bottom: 25px;
+
+    background-color: rgb(255,255,255);
 }
 
 .info_card .head{
     height: 65px;
+    padding: 0 5px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5px;
-
+    
     font-size: 24px;
     font-weight: bold;
     font-style: italic;
 
-    background-color: #d90707;
+    background-color: rgb(255,0,0);
     color: rgb(255,255,255);
 }
 
@@ -48,12 +51,12 @@
 
 .info_card .types .type{
     margin: 10px;
+    padding: 5px 10px;
 
     font-weight: bold;
     font-style: italic;
 
     border-radius: 8px;
-    padding: 5px 10px;
 
     color: rgb(255,255,255);
 }
@@ -83,10 +86,10 @@
 }
 
 .info_card .main_info .skils{
+    width: 20vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 20vw;
 
     font-size: 16px;
 }
@@ -97,13 +100,13 @@
 }
 
 .info_card .main_info .count{
-    background-color: #d4d4d4;
     width: 75%;
+    margin-bottom: 3px;
     
     text-align: right;
-    margin-bottom: 3px;
+    
+    background-color: #d4d4d4;
 }
-
 
 .info_card .profile{
     margin: 0 1%; 
@@ -128,23 +131,21 @@
 }
 
 .info_card .profile .info_profile div{
-    margin-bottom: 3px;
-
     width: 45%;
+    margin-bottom: 3px;
 
     display: flex;
     justify-content: space-between;
 }
 
 .info_card .profile .info_profile .prop{
-    font-weight:  bold;
     width: 40%;
+    font-weight:  bold;
 }
 
 .info_card .profile .info_profile .c_profile{
     width: 50%;
 }
-
 
 @media screen and (max-width: 480px)
 {

@@ -49,33 +49,3 @@ code {
 .result_of_search .props{
   text-align: center;
 }
-
-/*delete this shit
-.result_of_search{
-  padding: 15px;
-
-  font-family: 'Merienda', cursive;
-  font-size: 14px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.result_of_search p{
-  margin: 1px;
-}
-
-.result_of_search .ref{
-   font-family: 'Luckiest Guy', cursive;
-   font-size: 18px;
-
-   color: blue;
-}
-
-.result_of_search .ref:hover{
-  color:red;
-  cursor: pointer
-}
-*/
-

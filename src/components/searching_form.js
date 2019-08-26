@@ -1,11 +1,11 @@
 import React, {useContext}from 'react';
-import { observer } from 'mobx-react';
 import Store from '../store/store';
 import TextField from '@material-ui/core/TextField';
 import FilterIcon from  '@material-ui/icons/FilterList';
 import CloseIcon from  '@material-ui/icons/Close';
 import FilterForm from './filter_form';
 import {makeStyles } from '@material-ui/core/styles';
+import { observer } from 'mobx-react';
 
 const useStyles = makeStyles (themes => ({
     filterIcon:{

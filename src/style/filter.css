@@ -13,18 +13,20 @@
 
 .filter{
     width: 30vw;
-    background: #ffffff;
-    padding-bottom: 5px;
-
     z-index: 200;
+    padding-bottom: 5px;
+    
+    background: #ffffff;
 }
 
 .filter .header{
-    background: #000000;
-    color: #ffffff;
-    text-align: center;
     height: 65px;
     padding: 5px 0px;
+    
+    text-align: center;
+
+    color: #ffffff;
+    background: #000000;
 }
 
 .filter .header h1, .filter .header h4{
@@ -56,17 +58,18 @@
 }
 
 .filter .check .types .checkBoxes{
-    font-size: 16px;
-
     display: flex;
     flex-wrap: wrap;
+
+    font-size: 16px;
 }
 
 .filter .check .types .checkBoxes div{
-    display: flex;
-    justify-content: flex-start;
     width: 20%;
     margin-left: 10px;
+
+    display: flex;
+    justify-content: flex-start;
 }
 
 .filter .check .clear{
@@ -76,7 +79,7 @@
 }
 
 .filter .check .clear:hover{
-    color: red;
+    color: rgb(255,0,0);
 }
 @media screen and (max-width: 320px)
 {

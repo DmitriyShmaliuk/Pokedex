@@ -29,7 +29,7 @@
 }
 
 .pages_list .button:hover, .pages_list .section:hover{
-    color: red;
+    color: rgb(255,0,0);
 }
 
 @media screen and (max-width: 780px)
