@@ -33,8 +33,8 @@ const Start = observer(() => {
                 <div className = 'props'>
                    <label>Show: <select id = 'show' onChange = {changePokemonsCount}>
                         <option>10</option>
-                        <option>20</option>
-                        <option selected>50</option>
+                        <option selected>20</option>
+                        <option>50</option>
                     </select></label>
                 </div>
             </div>
