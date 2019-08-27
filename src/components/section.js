@@ -5,12 +5,8 @@ import {observer} from 'mobx-react';
 const Section = observer (({number}) =>{
     const localStore = useContext(Store);
 
-    const changePage = () =>{
-        localStore.SettingPage(number);
-    }
-
     return (
-        <div className = 'section' onClick = {changePage}>
+        <div className = 'section' onClick = {() => localStore.SettingPage(number)}>
             {number}
         </div>
     )

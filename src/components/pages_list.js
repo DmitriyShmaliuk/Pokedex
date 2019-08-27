@@ -16,13 +16,16 @@ const PagesList = observer(() =>{
                 arr.push(<div className='section'>...</div>);
             }
 
-            for(var i = localStore.page; i <localStore.page + 5 && i< Math.ceil(localStore.countOfCard/localStore.countOfPokemons); ++i)
+            let i = localStore.page;
+
+            for(; i <localStore.page + 5 && i< Math.ceil(localStore.countOfCard/localStore.countOfPokemons); ++i)
                 arr.push(<Section number = {i}/>);
 
             if (localStore.page !== Math.ceil(localStore.countOfCard / localStore.countOfPokemons))
                 arr.push(<div className='section'>...</div>);
-            
-                arr.push(<Section number= {Math.ceil(localStore.countOfCard / localStore.countOfPokemons)}/>);
+
+            if(localStore.filterPokemons.length>localStore.countOfPokemons * (localStore.page+4))
+                arr.push(<Section number= {Math.ceil(localStore.filterPokemons.length / localStore.countOfPokemons)}/>);
        }
        else
             arr.push(<Section number= {1}/>);
