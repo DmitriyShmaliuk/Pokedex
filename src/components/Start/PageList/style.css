@@ -1,0 +1,38 @@
+.pagesList{
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px auto;
+}
+
+.pagesList .button{
+    width: 60px;
+}
+
+.pagesList .section{
+    width: 25px;
+}
+
+.pagesList .button, .pagesList .section{
+    background: #3f51b5;
+    text-align: center;
+    margin: 3px;
+    cursor: pointer;
+    color: #ffffff;
+
+    font-family: 'Merienda';
+
+    border-radius: 5px;
+}
+
+.pagesList .button:hover, .pagesList .section:hover{
+    color: rgb(255,0,0);
+}
+
+@media screen and (max-width: 780px)
+{
+    .pagesList{
+        width: 80vw;
+    }
+}

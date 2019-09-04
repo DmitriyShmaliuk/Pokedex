@@ -1,0 +1,19 @@
+.start{
+    margin-top: 65px;
+    min-height: 85vh;
+}
+
+.body{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.resultOfSearch{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.resultOfSearch .props{
+   text-align: center;
+}

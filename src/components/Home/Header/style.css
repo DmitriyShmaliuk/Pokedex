@@ -1,0 +1,43 @@
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.headMenu{
+    height: 65px;
+    width: 250px;
+
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  
+    color: white;
+    background-color: black;
+}
+
+.headText{
+    text-decoration: none;
+    color: rgb(255,255,255);
+}
+
+.headText:active{
+    font-size: 90%;
+}
+  
+.menuSection{
+    height: 30px;
+    margin-left: 30px;
+    padding-top: 15px;
+}
+  
+.menuSection a{
+    font-size: 16px;
+    text-decoration: none;
+
+    color: #3C3838;
+}
+  
+.menuSection p:hover, .menuSection a:hover{
+    color: black;
+}

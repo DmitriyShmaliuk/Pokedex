@@ -1,0 +1,26 @@
+.searchingForm{
+    width: 92vw;
+    margin: 0 auto;
+    padding-top: 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.searchingForm #search{
+  width: 89vw;
+}
+
+.filterForm {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+
+    width: 100vw;
+    height: 100vh;
+   
+    background: rgba(0,0,0,0.6);
+}
