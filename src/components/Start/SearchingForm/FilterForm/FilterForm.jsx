@@ -17,13 +17,6 @@ const Filter = inject('Store')(observer (props=>{
 
                 <form onChange = {localStore.SearchAsFilterMenu}>
                     <div className = 'check'>
-                        <div className = 'checkMin'>
-                            <div><span>Min HP: </span><input type='number' name = 'hp' id = 'hp'/></div>
-                            <div><span>Min Attack: </span><input type='number' name = 'attack' id ='attack'/></div>
-                            <div><span>Min Speed: </span><input type='number' name = 'speed' id = 'speed'/></div>
-                            <div><span>Min Defense: </span><input type='number' name = 'defense' id= 'defense'/></div>
-                        </div>
-
                         <div className = 'types'>
                             <h3>Types</h3>
                             <div className = "checkBoxes">

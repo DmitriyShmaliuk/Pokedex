@@ -5,7 +5,7 @@ const Section = inject('Store')(observer(props =>{
     const localStore = props.Store;
 
     return (
-        <div className = 'section' onClick = {() => localStore.SettingPage(props.number)}>
+        <div className = {props.nameOfClass} onClick = {() => localStore.SettingPage(props.number)}>
             {props.number}
         </div>
     )

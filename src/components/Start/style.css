@@ -1,9 +1,4 @@
 .start{
-    margin-top: 65px;
-    min-height: 85vh;
-}
-
-.body{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

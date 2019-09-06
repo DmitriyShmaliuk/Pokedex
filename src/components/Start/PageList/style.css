@@ -10,11 +10,11 @@
     width: 60px;
 }
 
-.pagesList .section{
+.pagesList .section, .pagesList .activeSection{
     width: 25px;
 }
 
-.pagesList .button, .pagesList .section{
+.pagesList .button, .pagesList .section, .pagesList .button, .pagesList .activeSection{
     background: #3f51b5;
     text-align: center;
     margin: 3px;
@@ -26,7 +26,11 @@
     border-radius: 5px;
 }
 
-.pagesList .button:hover, .pagesList .section:hover{
+.pagesList .activeSection{
+    color: #07e616;
+}
+
+.pagesList .button:hover, .pagesList .section:hover, .pagesList .activeSection:hover{
     color: rgb(255,0,0);
 }
 

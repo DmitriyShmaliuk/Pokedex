@@ -4,9 +4,6 @@ import { makeStyles } from '@material-ui/styles';
 //задать стили для элементов
 const useStyle = makeStyles({
      info:{
-      minHeight: '70vh',
-      marginTop: '90px',
-
       '& h1, & p':{
         margin: '30px',
         width: '85%',

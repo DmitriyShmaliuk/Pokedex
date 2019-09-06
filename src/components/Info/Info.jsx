@@ -1,112 +1,68 @@
-import React from 'react';
+import React, {useEffect}from 'react';
+import { inject, observer} from 'mobx-react';
+import Img from 'react-image';
 import Zoom from '@material-ui/core/Zoom';
 import BackIcon from  '@material-ui/icons/ArrowBack';
 import {Link} from 'react-router-dom';
 import './style.css';
-  
-export default class Info extends React.Component{
-    state = {
-        info: {},
-        add_info: {},
-    }
 
-    componentDidMount(){
-        fetch(`https://pokeapi.co/api/v2/pokemon/${this.props.match.params.number}/`)
-        .then (res => res.json ())
-        .then (result => {this.setState({info: result})});
 
-        fetch(`https://pokeapi.co/api/v2/pokemon-species/${this.props.match.params.number}/`)
-        .then(res => res.json())
-        .then(result => {this.setState({add_info: result})});
-    }
+const Info = inject('Store')(observer(props =>{
+    const localStore = props.Store;
+    const imgID = ((localStore.pokemonInfo.id / 100)>=1) ? localStore.pokemonInfo.id : ((localStore.pokemonInfo.id / 10) >= 1? '0' + 
+    localStore.pokemonInfo.id : '00' + localStore.pokemonInfo.id);
 
-   render()
-   {
-       const imgID = ((this.state.info.id / 100)>=1) ? this.state.info.id : ((this.state.info.id / 10) >= 1? '0' + this.state.info.id : '00' + this.state.info.id);
 
-       return (
-       <div className = "backgroundCard">
-              {this.state.info.stats !== undefined &&
+    useEffect(() =>{
+        localStore.GettingInfo(props.match.params.number);
+    },[props.match.params.number]);
+
+    return(
+        <div className = "backgroundCard">
+               {localStore.pokemonInfo.stats !== undefined &&
                 <div>
                     <Link to = '/' className = 'backIcon'><BackIcon className = "backIcon"/></Link>
                     <Zoom in = "true" timeout={{ enter: 300}}>   
                         <div className = "infoCard">
                             <div className = "head">
                                 <div></div>
-                                <div>{this.state.info.name.charAt(0).toUpperCase() + this.state.info.name.slice(1)} </div>
-                                <div>#{this.state.info.id}</div>
+                                <div>{localStore.pokemonInfo.name.charAt(0).toUpperCase() + localStore.pokemonInfo.name.slice(1)} </div>
+                                <div>#{localStore.pokemonInfo.id}</div>
                             </div>
 
-                            <div className = "types">
-                                    <div className = "type one">{this.state.info.types[0].type.name.toUpperCase()}</div>
+                             <div className = "types">
+                                    <div className = "type one">{localStore.pokemonInfo.types[0].type.name.toUpperCase()}</div>
 
                                     {
-                                    this.state.info.types[1] !== undefined &&
-                                    <div className = "type two">{this.state.info.types[1].type.name.toUpperCase()}</div>
+                                        localStore.pokemonInfo.types[1] !== undefined &&
+                                        <div className = "type two">{localStore.pokemonInfo.types[1].type.name.toUpperCase()}</div>
                                     }
                                     
                             </div>
 
                             <div className = "mainInfo">
                                 <div className = 'image'>
-                                        <img src = {'https://assets.pokemon.com/assets/cms2/img/pokedex/full/' + imgID + '.png'} alt = {this.state.info.name} />  
+                                    <Img className = 'img' alt = '' src = {`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${imgID}.png`}
+                                        loader = {<img src = 'http://gifimage.net/wp-content/uploads/2018/04/loading-gif-orange-8.gif'  alt = '' style = {{width: 80, height: 80}}/>}
+                                        unloader = {<img src = 'https://straand.no/wp-content/uploads/2017/03/3244-300x300.png'  alt = ''/>} 
+                                        />
                                 </div>
 
                                 <div className = 'skils'>
-                                    <div><span>HP:</span> <span className = "count">{this.state.info.stats[5].base_stat}</span></div>
-                                    <div><span>Attack:</span> <span className = "count">{this.state.info.stats[4].base_stat}</span></div>
-                                    <div><span>Speed:</span> <span className = "count">{this.state.info.stats[0].base_stat}</span></div>
-                                    <div><span>Defense:</span> <span className = "count">{this.state.info.stats[3].base_stat}</span></div>
-                                    <div><span>Sp Atk:</span> <span className = "count">{this.state.info.stats[2].base_stat}</span></div>
-                                    <div><span>Sp Def:</span> <span className = "count">{this.state.info.stats[1].base_stat}</span></div>
+                                    <div><span>HP:</span> <span className = "count">{localStore.pokemonInfo.stats[5].base_stat}</span></div>
+                                    <div><span>Attack:</span> <span className = "count">{localStore.pokemonInfo.stats[4].base_stat}</span></div>
+                                    <div><span>Speed:</span> <span className = "count">{localStore.pokemonInfo.stats[0].base_stat}</span></div>
+                                    <div><span>Defense:</span> <span className = "count">{localStore.pokemonInfo.stats[3].base_stat}</span></div>
+                                    <div><span>Sp Atk:</span> <span className = "count">{localStore.pokemonInfo.stats[2].base_stat}</span></div>
+                                    <div><span>Sp Def:</span> <span className = "count">{localStore.pokemonInfo.stats[1].base_stat}</span></div>
                                 </div>
                             </div>
-
-                            <div className = "profile">
-                                <h4>Additional information</h4>
-
-                                <div className = "infoProfile">
-                                    <div><span className = "prop">Weigth:</span><span className = "cProfile">{this.state.info.weight / 10.0} kg</span></div>
-                                    <div><span className = "prop">Height:</span><span className = "cProfile">{this.state.info.height / 10.0} m</span></div>
-
-                                    <div>
-                                        <span className = "prop">Egg Groups:</span>
-                                        <span className = "cProfile">
-                                            {this.state.add_info.egg_groups !== undefined &&
-                                                    <span>{this.state.add_info.egg_groups.map(el => el.name + ' ')}</span>
-                                            }
-                                            
-                                        </span>
-                                    </div>
-
-                                    <div>
-                                        <span className = "prop">Abilities:</span>
-                                        <span className = "cProfile">
-                                            {this.state.info.abilities[0] &&
-                                                this.state.info.abilities[0].ability.name
-                                            }
-                                            {this.state.info.abilities[1] &&
-                                                this.state.info.abilities[1].ability.name
-                                            }
-                                        </span>
-                                    </div>
-                                    <div><span className = "prop">Capture rate:</span><span className = "cProfile">{this.state.add_info.capture_rate}</span></div>
-
-                                    <div><span className = "prop">Gender rate:</span><span className = "cProfile">{this.state.add_info.gender_rate}</span></div>
-                                    <div><span className = "prop">Base happiness:</span><span className = "cProfile">{this.state.add_info.base_happiness}</span></div>
-                                    <div><span className = "prop">Shape:</span>
-                                            <span className = "cProfile">
-                                            {this.state.add_info.shape !== undefined &&
-                                                <span>{this.state.add_info.shape.name}</span>}
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div> 
                 </Zoom> 
                 </div>
               }
        </div> 
-       );
-   }
-}
+    );
+}));
+
+export default Info;

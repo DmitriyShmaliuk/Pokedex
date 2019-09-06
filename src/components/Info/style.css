@@ -108,45 +108,6 @@
     background-color: #d4d4d4;
 }
 
-.infoCard .profile{
-    margin: 0 1%; 
-}
-
-.infoCard h4{
-    height: 25px;    
-
-    font-style: italic;
-    text-align: center;
-
-    background-color: #d90707;
-    color: rgb(255,255,255);
-}
-
-.infoCard .profile .infoProfile{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    font-size: 16px;
-}
-
-.infoCard .profile .infoProfile div{
-    width: 45%;
-    margin-bottom: 3px;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.infoCard .profile .infoProfile .prop{
-    width: 40%;
-    font-weight:  bold;
-}
-
-.infoCard .profile .infoProfile .cProfile{
-    width: 50%;
-}
-
 @media screen and (max-width: 480px)
 {
     .backgroundCard .backIcon{
@@ -175,18 +136,6 @@
     .infoCard .mainInfo .skils{
         min-width: 90%;
      }
-
-    .infoCard .profile .infoProfile{
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    
-        font-size: 14px;
-    }
-
-    .infoCard .profile .infoProfile div{
-        width: 90%;
-    }
 }
 
 @media screen and (max-width: 1080px)

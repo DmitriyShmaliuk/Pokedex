@@ -9,29 +9,26 @@ const PagesList = inject('Store')(observer(props =>{
     const gettingSection = () =>{
         let arr = [];
 
-       if(localStore.countOfCard !== 0)
-       {
-            if (localStore.page !==1 && localStore.countOfCard > 5){
-                arr.push(<Section number= {1}/>);
-                arr.push(<div className='section'>...</div>);
-            }
+        let i, nameOfClass = 'section';
+        let range = (localStore.countOfCard !== 0)?Math.ceil(localStore.countOfCard/localStore.countOfPokemons) : localStore.countOfPokemons;
 
-            let i = localStore.page;
+        if (localStore.page === 1)
+            i = localStore.page;
+        else
+            i = localStore.page - 1;
 
-            for(; i <localStore.page + 5 && i< Math.ceil(localStore.countOfCard/localStore.countOfPokemons); ++i)
-                arr.push(<Section number = {i}/>);
+        for(; i <localStore.page + 5 && i <=range; ++i){
+            if(i === localStore.page)
+                nameOfClass = 'activeSection';
+            else
+                nameOfClass = 'section';
 
-            if (localStore.page !== Math.ceil(localStore.countOfCard / localStore.countOfPokemons))
-                arr.push(<div className='section'>...</div>);
-
-            if(localStore.filterPokemons.length>localStore.countOfPokemons * (localStore.page+4))
-                arr.push(<Section number= {Math.ceil(localStore.filterPokemons.length / localStore.countOfPokemons)}/>);
-       }
-       else
-            arr.push(<Section number= {1}/>);
+            arr.push(<Section nameOfClass = {nameOfClass} number = {i} />);
+        }
 
         return arr;
     }
+
     return (
         <div className = 'pagesList'>
             {   localStore.page>1 &&

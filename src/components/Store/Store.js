@@ -1,158 +1,111 @@
 import  {action, observable} from 'mobx';
+import axios from "axios";
 
 class Store{
     @observable pokemons = []; //массив покемонов
     @observable showPokemons = []; //массив показываемых покемонов
     @observable filterPokemons = []; //массив фильтрированных покемонов
+    @observable pokemonInfo = {}; //инфомрация об конкретном покемоне
     @observable page = 1; //текущая страница
     @observable countOfPokemons = 20; //количество покемонов на странице
-    @observable countOfCard = 802; //количество покемонов
+    @observable countOfCard = 0; //количество покемонов
 
     constructor (){
-        //инициализация начального массива покемонов (работа с API)
-        for(var i=1;i<=this.countOfPokemons;++i){
-            fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
-            .then(res => res.json())
-            .then(result => {this.showPokemons.push({name: result.name,
-                                                     id: result.id,
-                                                     front_default: result.sprites.front_default,
-                                                     stats: result.stats,
-                                                     types: result.types,
-                                                    })});
-        }
-
-        this.InitialPokemons();
+        this.GetPokemons();
     }
-    
-    //инициализация базы покемонов (работа с API)
-    @action InitialPokemons = async () =>{
-        var API_URL,data;
 
-        for (let i=1; i<=802;++i){
-            API_URL = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
-            data = await API_URL.json();
+    //получить покемонов на следующую страницу
+    GetPokemons = async () =>{
+        const res = await axios(`https://pokeapi.co/api/v2/pokemon/?limit=${this.countOfPokemons}&offset=${(this.page * this.countOfPokemons)-this.countOfPokemons}`);
+        this.showPokemons = []; 
+        this.countOfCard = res.data.count;
+        res.data.results.map(el => this.showPokemons.push(el));
 
-            this.pokemons.push({name: data.name,
-                                id: data.id,
-                                front_default: data.sprites.front_default,
-                                stats: data.stats,
-                                types: data.types,
-                              });
-            this.filterPokemons.push({name: data.name,
-                                id: data.id,
-                                front_default: data.sprites.front_default,
-                                stats: data.stats,
-                                types: data.types,
-                              });
+        if(this.pokemons.length === 0){
+            const res = await axios(`https://pokeapi.co/api/v2/pokemon/?limit=${this.countOfCard}&offset=0`);
+            res.data.results.map(el => this.pokemons.push(el));
         }
     }
 
     //изменить количество отображаемых покемонов на странице
-    @action SetCountPokemons = (value = 20) => {
+    @action SetCountPokemons = (value) => {
         this.countOfPokemons = value;
-        this.showPokemons = [];
 
-        this.filterPokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page * this.countOfPokemons)
-                      .map(el=>this.showPokemons.push(el));
-
-        document.getElementById('search').value = '';
+        if(this.filterPokemons.length === 0)
+            this.GetPokemons();
+        else
+            this.showPokemons = this.filterPokemons.slice(0, this.countOfPokemons);
     }
 
     //функция поиска по имени
     @action SearchAsName = () =>{
-        this.filterPokemons = this.pokemons.slice(0,802)
-            .filter(el=>{return el.name.indexOf(document.getElementById('search').value) >=0});
+        const text = document.getElementById('search').value;
+        this.page = 1;
 
-        this.showPokemons = this.filterPokemons.slice(0,this.countOfPokemons);
-        this.countOfCard = this.filterPokemons.length;
-    
-        if (document.getElementById('search').value.length === 0){
-            this.pokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page * this.countOfPokemons)
-                .map(el => this.showPokemons.push(el));
-                
+        if(text.length !== 0){
+            this.filterPokemons = this.pokemons.filter(el => el.name.indexOf(text) >=0);
+            this.countOfCard = this.filterPokemons.length;
+            this.showPokemons = this.filterPokemons.slice(0, this.countOfPokemons);
+        }
+        else{
             this.countOfCard = this.pokemons.length;
             this.filterPokemons = [];
-            this.pokemons.map(el => this.filterPokemons.push(el));
+            this.GetPokemons();
         }
     }
 
     //функция поиска по параметра фильтра
-    @action SearchAsFilterMenu = () =>{
-            let result = this.pokemons.filter(el => {return  el.stats[5].base_stat >=  document.getElementById('hp').value});
-            result = result.filter(el => {return el.stats[4].base_stat >=  document.getElementById('attack').value});
-            result = result.filter(el => {return el.stats[0].base_stat >=  document.getElementById('speed').value});
-            result = result.filter(el => {return el.stats[3].base_stat >=  document.getElementById('defense').value});
-
-            let second_result = [];
-            let state = false;
-
-            const types = ['normal', 'flying', 'poison', 'ground', 'bug', 'fire', 'water', 'grass', 'figting', 'rock', 'ghost',
-                         'steel', 'electric', 'psychic', 'ice', 'dragon', 'dark', 'fairy', 'shadow'];
-
-            for(let i in types){
-                if(document.getElementById(types[i]).checked){
-                    state = true;
-
-                    second_result = second_result.concat(result.filter(el => 
-                        (el.types[1]) ? (el.types[0].type.name === types[i] || el.types[1].type.name === types[i]) 
-                                            : (el.types[0].type.name === types[i])
-                    ));
-                }
-            }
-            
-            if(second_result.length===0 && !state)
-            second_result = result;
-
-            second_result = second_result.sort((a,b) => {return a.id - b.id});
-            this.filterPokemons = second_result;
-            this.showPokemons = this.filterPokemons.slice(0,this.countOfPokemons);
-            this.countOfCard = this.filterPokemons.length;      
+    @action SearchAsFilterMenu = () => {    
     }
 
     //перейти на следующую страницу
     @action NextPage = () =>{
         this.page++;
-        this.showPokemons = [];
+
+        console.log((this.page*this.countOfPokemons)-this.countOfPokemons);
+        console.log(this.page*this.countOfPokemons);
         
-        this.filterPokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page * this.countOfPokemons)
-                        .map(el=>this.showPokemons.push(el));
+        if(this.filterPokemons.length === 0)
+            this.GetPokemons();
+        else
+            this.showPokemons = this.filterPokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page*this.countOfPokemons);
     }
 
     //перейти на предыдущую страницу
     @action BackPage = () =>{
         this.page--;
-        this.showPokemons = [];
-    
-        this.filterPokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page * this.countOfPokemons)
-                      .map(el=>this.showPokemons.push(el));
+
+        if(this.filterPokemons.length === 0)
+            this.GetPokemons();
+        else
+            this.showPokemons = this.filterPokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page*this.countOfPokemons);
     }
 
     //установить страницу
-    @action SettingPage = (value = 1) =>{
-       this.page = (value>0)?value : 1;
-       this.showPokemons = [];
-
-        this.filterPokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page * this.countOfPokemons)
-                      .map(el=>this.showPokemons.push(el));
+    @action SettingPage = (value) =>{
+        this.page = value;
+        
+        if(this.filterPokemons.length === 0)
+            this.GetPokemons();
+        else
+            this.showPokemons = this.filterPokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page*this.countOfPokemons);
     }
 
     //очистить фильтрационную форму
     @action ClearFilterForm = () =>{
+        document.getElementById('search').value = '';
+
         this.filterPokemons = [];
-        this.countOfCard = this.pokemons.length;
-        this.pokemons.map(el => this.filterPokemons.push(el));
+        this.page = 1;
+        this.GetPokemons();
+    }
 
-        document.getElementById('hp').value = '';
-        document.getElementById('attack').value = '';
-        document.getElementById('speed').value = '';
-        document.getElementById('defense').value = '';
-
-        const types = ['normal', 'flying', 'poison', 'ground', 'bug', 'fire', 'water', 'grass', 'figting', 'rock', 'ghost',
-                         'steel', 'electric', 'psychic', 'ice', 'dragon', 'dark', 'fairy', 'shadow'];
-
-        types.map(el => document.getElementById(el).checked = false);
-
-        this.SettingPage(1);
+    //получить информация о конкретном покемоне
+    @action GettingInfo = async (value) =>{
+        this.pokemonInfo  = {};
+        
+        const info = await axios(`https://pokeapi.co/api/v2/pokemon/${value}`);
+        this.pokemonInfo = info.data;
     }
 }
 

@@ -27,17 +27,6 @@
     margin: 10px 0;
 }
 
-.filter .check .checkMin{
-    width: 90%;
-    margin: 0 auto;
-}
-
-.filter .check .checkMin div{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-
 .filter .check .types{
     text-align: center;
 }

@@ -14,14 +14,14 @@ const Start = inject ('Store')(observer(props => {
     }
 
     return(
-        <div className = "start">
+        <div>
             <div>
                 <SearchingForm/>
             </div>
 
-            <div className = "body">
+            <div className = "start">
                 { localStore.showPokemons.map((el) => 
-                <Card name = {el.name} front_default = {el.front_default} id = {el.id}/>)}       
+                <Card name = {el.name} id = {el.url.slice(34,-1)}/>)}       
             </div>
 
             <div className = 'resultOfSearch'>
