@@ -33,8 +33,6 @@ const Filter = inject('Store')(observer (props=>{
                 localStore.filterPokemons.forEach(elOne => res.data.pokemon.forEach(elTwo => elOne.name === elTwo.pokemon.name 
                     && result.push(elOne)));
                 localStore.filterPokemons = result;
-
-                localStore.filterPokemons.forEach(el => console.log(el.name));
             }
 
             localStore.showPokemons = localStore.filterPokemons.slice(0, localStore.countOfPokemons); 
