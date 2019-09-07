@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState}from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,7 +9,7 @@ import Drawer from '@material-ui/core/Drawer';
 import {Link} from 'react-router-dom';
 import './style.css';
 
-//задать стили для элемента
+//set style for elements
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -46,14 +46,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SearchAppBar() {
+const Header = () => {
   const classes = useStyles();
   
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
+  const [state, setState] = useState({
+    left: false
   });
   
   const sideList = side => (
@@ -99,3 +96,5 @@ export default function SearchAppBar() {
     </div>
   );
 }
+
+export default Header;

@@ -2,19 +2,19 @@ import  {action, observable} from 'mobx';
 import axios from "axios";
 
 class Store{
-    @observable pokemons = []; //массив покемонов
-    @observable showPokemons = []; //массив показываемых покемонов
-    @observable filterPokemons = []; //массив фильтрированных покемонов
-    @observable pokemonInfo = {}; //инфомрация об конкретном покемоне
-    @observable page = 1; //текущая страница
-    @observable countOfPokemons = 20; //количество покемонов на странице
-    @observable countOfCard = 0; //количество покемонов
+    @observable pokemons = []; //all pokemons
+    @observable showPokemons = []; //displayed pokemons
+    @observable filterPokemons = []; //filtred pokemons
+    @observable pokemonInfo = {};  //info about current pokemon
+    @observable page = 1; //current page
+    @observable countOfPokemons = 20; //quantity of pokemons on page
+    @observable countOfCard = 0; //quantity of pokemons
 
     constructor (){
         this.GetPokemons();
     }
 
-    //получить покемонов на следующую страницу
+    //get pokemons on page 
     GetPokemons = async () =>{
         const res = await axios(`https://pokeapi.co/api/v2/pokemon/?limit=${this.countOfPokemons}&offset=${(this.page * this.countOfPokemons)-this.countOfPokemons}`);
         this.showPokemons = []; 
@@ -27,8 +27,8 @@ class Store{
         }
     }
 
-    //изменить количество отображаемых покемонов на странице
-    @action SetCountPokemons = (value) => {
+    //change the number of displayed Pokemon on page
+    @action SetCountPokemons = value => {
         this.countOfPokemons = value;
 
         if(this.filterPokemons.length === 0)
@@ -37,41 +37,17 @@ class Store{
             this.showPokemons = this.filterPokemons.slice(0, this.countOfPokemons);
     }
 
-    //функция поиска по имени
-    @action SearchAsName = () =>{
-        const text = document.getElementById('search').value;
-        this.page = 1;
-
-        if(text.length !== 0){
-            this.filterPokemons = this.pokemons.filter(el => el.name.indexOf(text) >=0);
-            this.countOfCard = this.filterPokemons.length;
-            this.showPokemons = this.filterPokemons.slice(0, this.countOfPokemons);
-        }
-        else{
-            this.countOfCard = this.pokemons.length;
-            this.filterPokemons = [];
-            this.GetPokemons();
-        }
-    }
-
-    //функция поиска по параметра фильтра
-    @action SearchAsFilterMenu = () => {    
-    }
-
-    //перейти на следующую страницу
+    //go to next page
     @action NextPage = () =>{
         this.page++;
-
-        console.log((this.page*this.countOfPokemons)-this.countOfPokemons);
-        console.log(this.page*this.countOfPokemons);
-        
+ 
         if(this.filterPokemons.length === 0)
             this.GetPokemons();
         else
             this.showPokemons = this.filterPokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page*this.countOfPokemons);
     }
 
-    //перейти на предыдущую страницу
+    //go to back page
     @action BackPage = () =>{
         this.page--;
 
@@ -81,7 +57,7 @@ class Store{
             this.showPokemons = this.filterPokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page*this.countOfPokemons);
     }
 
-    //установить страницу
+    //set number of page
     @action SettingPage = (value) =>{
         this.page = value;
         
@@ -91,19 +67,9 @@ class Store{
             this.showPokemons = this.filterPokemons.slice((this.page*this.countOfPokemons)-this.countOfPokemons, this.page*this.countOfPokemons);
     }
 
-    //очистить фильтрационную форму
-    @action ClearFilterForm = () =>{
-        document.getElementById('search').value = '';
-
-        this.filterPokemons = [];
-        this.page = 1;
-        this.GetPokemons();
-    }
-
-    //получить информация о конкретном покемоне
+    //get inforamtion about pokemon
     @action GettingInfo = async (value) =>{
         this.pokemonInfo  = {};
-        
         const info = await axios(`https://pokeapi.co/api/v2/pokemon/${value}`);
         this.pokemonInfo = info.data;
     }

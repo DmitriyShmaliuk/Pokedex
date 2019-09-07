@@ -8,6 +8,7 @@ import './style.css';
 const Start = inject ('Store')(observer(props => {
     const localStore = props.Store;
 
+    //change quantity of pokemons on page
     const changePokemonsCount = () =>{
         var count = document.getElementById('show').value;
         localStore.SetCountPokemons(count);
@@ -15,24 +16,20 @@ const Start = inject ('Store')(observer(props => {
 
     return(
         <div>
-            <div>
-                <SearchingForm/>
-            </div>
+            <SearchingForm/>
 
             <div className = "start">
                 { localStore.showPokemons.map((el) => 
-                <Card name = {el.name} id = {el.url.slice(34,-1)}/>)}       
+                <Card key = {el.name} name = {el.name} idCard = {el.url.slice(34,-1)}/>)}       
             </div>
 
             <div className = 'resultOfSearch'>
-                <div>
-                    <PagesList />  
-                </div>
+                <PagesList />  
 
                 <div className = 'props'>
-                   <label>Show: <select id = 'show' onChange = {changePokemonsCount}>
+                   <label>Show: <select id = 'show' onChange = {changePokemonsCount} defaultValue = {localStore.countOfPokemons}>
                         <option>10</option>
-                        <option selected>20</option>
+                        <option>20</option>
                         <option>50</option>
                     </select></label>
                 </div>

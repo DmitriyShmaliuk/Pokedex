@@ -2,16 +2,12 @@ import React, {useEffect}from 'react';
 import { inject, observer} from 'mobx-react';
 import Img from 'react-image';
 import Zoom from '@material-ui/core/Zoom';
-import BackIcon from  '@material-ui/icons/ArrowBack';
-import {Link} from 'react-router-dom';
 import './style.css';
-
 
 const Info = inject('Store')(observer(props =>{
     const localStore = props.Store;
     const imgID = ((localStore.pokemonInfo.id / 100)>=1) ? localStore.pokemonInfo.id : ((localStore.pokemonInfo.id / 10) >= 1? '0' + 
     localStore.pokemonInfo.id : '00' + localStore.pokemonInfo.id);
-
 
     useEffect(() =>{
         localStore.GettingInfo(props.match.params.number);
@@ -21,7 +17,6 @@ const Info = inject('Store')(observer(props =>{
         <div className = "backgroundCard">
                {localStore.pokemonInfo.stats !== undefined &&
                 <div>
-                    <Link to = '/' className = 'backIcon'><BackIcon className = "backIcon"/></Link>
                     <Zoom in = "true" timeout={{ enter: 300}}>   
                         <div className = "infoCard">
                             <div className = "head">
@@ -43,8 +38,8 @@ const Info = inject('Store')(observer(props =>{
                             <div className = "mainInfo">
                                 <div className = 'image'>
                                     <Img className = 'img' alt = '' src = {`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${imgID}.png`}
-                                        loader = {<img src = 'http://gifimage.net/wp-content/uploads/2018/04/loading-gif-orange-8.gif'  alt = '' style = {{width: 80, height: 80}}/>}
-                                        unloader = {<img src = 'https://straand.no/wp-content/uploads/2017/03/3244-300x300.png'  alt = ''/>} 
+                                        loader = {<img src = 'http://gifimage.net/wp-content/uploads/2018/04/loading-gif-orange-8.gif'  alt = '' style = {{width: 170, 'margin-bottom': 10}}/>}
+                                        unloader = {<img src = 'https://straand.no/wp-content/uploads/2017/03/3244-300x300.png'  alt = '' style = {{width: 170, 'margin-bottom': 10}}/>} 
                                         />
                                 </div>
 

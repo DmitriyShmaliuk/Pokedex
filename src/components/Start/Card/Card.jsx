@@ -1,24 +1,23 @@
 import React from "react"
-import PropTypes from "prop-types";
 import Img from 'react-image'
 import {Link} from 'react-router-dom';
 import {makeStyles} from '@material-ui/core/styles'
 import './style.css';
 
-//задать стили для элемента
+//set style for elements
 const useStyles = makeStyles (() => ({
     link:{
         'text-decoration': 'none',
     }
 }))
 
-const Card = (({name, id}) =>
+const Card = (({name, idCard}) =>
 {
    const classes = useStyles(); 
-   const imgID= ((id / 100)>=1) ? id : ((id / 10) >= 1? '0' + id : '00' + id);  
+   const imgID= ((idCard / 100)>=1) ? idCard : ((idCard / 10) >= 1? '0' + idCard : '00' + idCard);  
 
    return (
-        <Link  to = {`/pokemons/${id}/`} className = {classes.link} >
+        <Link  to = {`/pokemons/${idCard}/`} className = {classes.link} >
         <div className = "card">
             <div></div>
             <div className = "imgOfCard">
@@ -37,15 +36,3 @@ const Card = (({name, id}) =>
 });
 
 export default Card;
-
-Card.propTypes = {
-    name: PropTypes.string,
-    fron_default: PropTypes.string,
-    id: PropTypes.number,
-}
-
-Card.defaultProps = {
-    name: 'Name of pokemon',
-    front_default: '',
-    id: 0,
-}

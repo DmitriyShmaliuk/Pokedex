@@ -111,8 +111,9 @@
 @media screen and (max-width: 480px)
 {
     .backgroundCard .backIcon{
-        top: 90px;
+        top: 185px;
         right: 85%;
+        fill: #ffffff;
     }
 
     .backgroundCard .backIcon:hover{
@@ -129,7 +130,7 @@
         align-items: center;
     }
 
-    .infoCard .mainInfo .image img{
+    .infoCard .mainInfo .image .img{
         min-width: 50vw;
     }
  

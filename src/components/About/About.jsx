@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-//задать стили для элементов
+//set style for elements
 const useStyle = makeStyles({
      info:{
       '& h1, & p':{
@@ -13,7 +13,7 @@ const useStyle = makeStyles({
      }
 });
 
-const About = (() =>{
+const About = () =>{
     const classes = useStyle();
 
     return(
@@ -36,6 +36,6 @@ const About = (() =>{
                   </p>
         </div>
     );
-});
+};
 
 export default About;

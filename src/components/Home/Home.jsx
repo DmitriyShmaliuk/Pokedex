@@ -3,8 +3,7 @@ import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import './style.css';
 
-export default function Home ({children})
-{
+const Home = ({children}) =>{
     return(
         <div className = "app">
             <Header />
@@ -15,3 +14,5 @@ export default function Home ({children})
         </div>
     );
 }
+
+export default Home;

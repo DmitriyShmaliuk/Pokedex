@@ -6,24 +6,27 @@ import './style.css';
 const PagesList = inject('Store')(observer(props =>{
     const localStore = props.Store;
 
-    const gettingSection = () =>{
+    //get sections for pagination
+    const gettingSections = () =>{
         let arr = [];
 
         let i, nameOfClass = 'section';
         let range = (localStore.countOfCard !== 0)?Math.ceil(localStore.countOfCard/localStore.countOfPokemons) : localStore.countOfPokemons;
 
-        if (localStore.page === 1)
-            i = localStore.page;
-        else
-            i = localStore.page - 1;
-
-        for(; i <localStore.page + 5 && i <=range; ++i){
-            if(i === localStore.page)
-                nameOfClass = 'activeSection';
+        if(localStore.countOfCard !== 0){
+            if (localStore.page === 1)
+                i = localStore.page;
             else
-                nameOfClass = 'section';
+                i = localStore.page - 1;
 
-            arr.push(<Section nameOfClass = {nameOfClass} number = {i} />);
+            for(; i <localStore.page + 5 && i <=range; ++i){
+                if(i === localStore.page)
+                    nameOfClass = 'activeSection';
+                else
+                    nameOfClass = 'section';
+
+                arr.push(<Section key = {'seaction' + i} nameOfClass = {nameOfClass} number = {i} />);
+            }
         }
 
         return arr;
@@ -36,7 +39,7 @@ const PagesList = inject('Store')(observer(props =>{
                      Back
                 </div>
             }
-            { gettingSection().map((el)=>el) }
+            { gettingSections().map((el)=>el) }
             { localStore.page < Math.ceil(localStore.countOfCard/localStore.countOfPokemons) &&
                 <div className = 'button' onClick = {localStore.NextPage}>
                     Next

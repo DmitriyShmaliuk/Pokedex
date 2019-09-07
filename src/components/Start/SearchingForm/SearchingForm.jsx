@@ -7,6 +7,7 @@ import FilterForm from './FilterForm/FilterForm';
 import {makeStyles } from '@material-ui/core/styles';
 import './style.css';
 
+//set style for elements
 const useStyles = makeStyles (themes => ({
     filterIcon:{
         '&:hover':{
@@ -35,14 +36,34 @@ const useStyles = makeStyles (themes => ({
     },
 }))
 
+
 const SearchingForm = inject ('Store')(observer(props =>{
     const classes = useStyles();
+
     const localStore = props.Store;
+
+    //search by name
+    const search = () =>{
+        const text = document.querySelector('#search').value;
+    
+        localStore.page = 1;
+
+        if(text.length !== 0){
+            localStore.filterPokemons = localStore.pokemons.filter(el => el.name.indexOf(text) >=0);
+            localStore.countOfCard = localStore.filterPokemons.length;
+            localStore.showPokemons = localStore.filterPokemons.slice(0, localStore.countOfPokemons);
+        }
+        else{
+            localStore.countOfCard = localStore.pokemons.length;
+            localStore.filterPokemons = [];
+            localStore.GetPokemons();
+        }
+    }
 
     return(
         <div className = "searchingForm">
-           <TextField id ="search" fullWidth autocomplete = 'off' placeholder = 'Searching Pokemons' name="search" onChange = {localStore.SearchAsName} />
-           <FilterIcon className = {classes.filterIcon} onClick = {()=>{document.getElementsByClassName('filterForm')[0].style.display = "block"}}/>
+           <TextField id ="search" fullWidth autocomplete = 'off' placeholder = 'Searching Pokemons' name="search" onChange = {search} />
+           <FilterIcon className = {classes.filterIcon} onClick = {()=>{document.querySelectorAll('.filterForm')[0].style.display = "block";}}/>
 
            <div className = "filterForm">
                 <div className = {classes.filterForm}>
