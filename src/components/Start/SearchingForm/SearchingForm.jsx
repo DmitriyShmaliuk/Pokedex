@@ -8,7 +8,7 @@ import {makeStyles } from '@material-ui/core/styles';
 import './style.css';
 
 //set style for elements
-const useStyles = makeStyles (themes => ({
+const useStyles = makeStyles (() => ({
     filterIcon:{
         '&:hover':{
             fill: "red",
@@ -43,13 +43,11 @@ const SearchingForm = inject ('Store')(observer(props =>{
     const localStore = props.Store;
 
     //search by name
-    const search = () =>{
-        const text = document.querySelector('#search').value;
-    
+    const search = ({target: {value}}) =>{
         localStore.page = 1;
 
-        if(text.length !== 0){
-            localStore.filterPokemons = localStore.pokemons.filter(el => el.name.indexOf(text) >=0);
+        if(value.length !== 0){
+            localStore.filterPokemons = localStore.pokemons.filter(el => el.name.indexOf(value) >=0);
             localStore.countOfCard = localStore.filterPokemons.length;
             localStore.showPokemons = localStore.filterPokemons.slice(0, localStore.countOfPokemons);
         }
@@ -67,7 +65,7 @@ const SearchingForm = inject ('Store')(observer(props =>{
 
            <div className = "filterForm">
                 <div className = {classes.filterForm}>
-                    <CloseIcon className = {classes.closeIcon} onClick = {()=>{document.getElementsByClassName('filterForm')[0].style.display = "none"}}/>
+                    <CloseIcon className = {classes.closeIcon} onClick = {()=>{document.querySelectorAll('.filterForm')[0].style.display = "none"}}/>
                     <FilterForm />
                 </div>
             </div>
