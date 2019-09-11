@@ -27,7 +27,7 @@ const Filter = inject('Store')(observer (props=>{
 
             if(checkBoxes.length === 1 || localStore.filterPokemons.length === 0)
                 res.data.pokemon.forEach(el => localStore.filterPokemons.push(el.pokemon)); 
-            else if (checkBoxes.length > 1 && index !== 0){
+            else if (checkBoxes.length <=2){
                 let result = [];
 
                 localStore.filterPokemons.forEach(elOne => res.data.pokemon.forEach(elTwo => elOne.name === elTwo.pokemon.name 
@@ -41,11 +41,15 @@ const Filter = inject('Store')(observer (props=>{
             localStore.page = 1; 
         };
 
-        if (checkBoxes.length !==0 )
+        if (checkBoxes.length <= 2)
             checkBoxes.forEach((el,index) => gettingTypeInfo(el.id, index));
-        else{
+        else if (checkBoxes === 0){
             localStore.filterPokemons = [];
             localStore.GetPokemons();
+        }
+        else{
+            localStore.filterPokemons = [];
+            localStore.showPokemons = localStore.filterPokemons.slice(0, localStore.countOfPokemons);
         }
     };
 

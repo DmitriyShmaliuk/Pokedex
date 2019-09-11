@@ -59,7 +59,7 @@ const Header = () => {
       <div className ="menuSection"><Link to = "/"><p>Home</p></Link></div>
       <div className = "menuSection"><Link to = "/about"><p>About</p></Link></div>
       <div className = "menuSection"><p><a href = "https://github.com/WilliaamKing/Pokedex" target="__blank">Code</a></p></div>
-      <div className = "menuSection"><p><a href = "mailto:dimkas2001@icloud.com" target= "__blank">Contact</a></p></div>
+      <div className = "menuSection"><p><a href = "mailto:dmitriy.shmaliuk@gmail.com" target= "__blank">Contact</a></p></div>
     </div>
   );
 
